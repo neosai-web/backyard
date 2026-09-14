@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>◆◆ 制限区域：認証 ◆◆</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ff0000; /* 警告色の赤 */
+            font-family: monospace;
+            text-align: center;
+            margin-top: 150px;
+        }
+        .box {
+            border: 2px dashed #ff0000;
+            display: inline-block;
+            padding: 30px;
+            background-color: #110000;
+        }
+        input[type="password"] {
+            background-color: #000;
+            color: #0ff;
+            border: 1px solid #ff0000;
+            padding: 5px;
+            font-family: monospace;
+        }
+        button {
+            background-color: #330000;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff0000;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>[ ACCESS RESTRICTED ]</h2>
+        <p>これより先の領域に入るには、鍵（暗証番号）が必要です。</p>
+        
+        <!-- パスワード入力フォーム -->
+        <input type="password" id="passInput" placeholder="PASSWORD">
+        <button onclick="checkPassword()">認証</button>
+        
+        <p id="errorMsg" style="font-size: 12px; margin-top: 15px;"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            // ▼ ここに設定したいパスワードを入力（例：2003）
+            const correctPassword = "2003"; 
+            const inputVal = document.getElementById("passInput").value;
+
+            if (inputVal === correctPassword) {
+                alert("認証成功。接続します...");
+                // 正解したらroom2.htmlへジャンプ
+                location.href = "room2.html";
+            } else {
+                document.getElementById("errorMsg").innerText = "ERROR: パスワードが違います。アクセスが拒否されました。";
+            }
+        }
+    </script>
+
+</body>
+</html>
